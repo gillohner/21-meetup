@@ -22,7 +22,7 @@ export const Nip07Provider = ({ children }) => {
 
       const ndkInstance = new NDK({
         signer: nip07signer,
-        explicitRelayUrls: allRelays
+        explicitRelayUrls: defaultRelays
       });
 
       ndkInstance.on('disconnect', () => {

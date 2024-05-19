@@ -17,7 +17,7 @@ const useNostrEvents = () => {
 
     const filters = {
       kinds: [31923],
-      tags: [['=', 't', 'BitcoinMeetup']]
+      '#t': ['52Meetups'],
     };
 
     const subscription = ndk.subscribe(filters);
