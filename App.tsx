@@ -1,4 +1,5 @@
-// App.tsx or wherever your navigation is configured
+// App.tsx
+import 'fast-text-encoding';
 import React from 'react';
 import { NativeBaseProvider } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';

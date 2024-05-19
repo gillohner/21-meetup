@@ -1,24 +1,34 @@
-// components/EventCard.tsx
 import React from 'react';
 import { Box, VStack, Text, Pressable } from 'native-base';
 
 const EventCard = ({ event, onPress }) => {
-  return (  
+  // Using the browser's locale and timezone to format the date
+  const dateFormatter = new Intl.DateTimeFormat(undefined, {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const formattedStartDate = dateFormatter.format(new Date(parseInt(event.tags.find(tag => tag[0] === 'start')[1])));
+  const formattedEndDate = dateFormatter.format(new Date(parseInt(event.tags.find(tag => tag[0] === 'end')[1])));
+  const name = event.tags.find(tag => tag[0] === 'name')[1];
+  const location = event.tags.find(tag => tag[0] === 'location')[1];
+
+  console.log(event)
+
+
+  return (
     <Pressable onPress={() => onPress(event.id)}>
       <Box borderWidth="1" borderColor="coolGray.300" borderRadius="md" p="5" m="2" bg="white">
         <VStack space={3}>
           <Text bold fontSize="md">
-            {event.title}
+            {name}
           </Text>
           <Text color="coolGray.600">
-            {event.content}
           </Text>
           <Text fontSize="xs" color="coolGray.400">
-            {new Date(event.start).toLocaleDateString()} - 
-            {new Date(event.end).toLocaleDateString()}
+            {formattedStartDate} - {formattedEndDate}
           </Text>
           <Text color="coolGray.500">
-            Location: {event.location}
+            Location: {location}
           </Text>
         </VStack>
       </Box>
