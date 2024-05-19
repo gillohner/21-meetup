@@ -18,6 +18,7 @@ const Nip52Form = () => {
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
   const [tags, setTags] = useState(new Array());
+  const [links, setLinks] = useState(new Array());
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -34,6 +35,7 @@ const Nip52Form = () => {
     const pubkey = ndk.signer.pubKeyHex;
     const createdAt = Math.floor(Date.now() / 1000);
     const hashtagTags = tags.map(tag => ["t", tag.value]);
+    const referenceLinks = links.map(link => ["r", link.value]);
 
     const event = {
       id: '',
@@ -50,6 +52,7 @@ const Nip52Form = () => {
         ['end_tzid', Intl.DateTimeFormat().resolvedOptions().timeZone],
         ['location', location],
         ...hashtagTags,
+        ...referenceLinks,
       ],
     };
 
@@ -91,6 +94,13 @@ const Nip52Form = () => {
             list={tags}
             setList={setTags}
             placeholder="Add Hashtag"
+          ></InputList>
+          <InputList
+            label="External Links"
+            list={links}
+            setList={setLinks}
+            placeholder="example.com"
+            isLink={true}
           ></InputList>
           <Button mt={4} onPress={handleSubmit}>
             <Text>Create Event</Text>
