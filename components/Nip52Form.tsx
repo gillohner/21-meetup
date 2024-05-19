@@ -71,13 +71,13 @@ const Nip52Form = () => {
     <Box flex={1} p={4} justifyContent="center" alignItems="center">
       {!loading && !success && (
         <VStack space={4} w="90%" maxW="400px">
-          <FormInput label="Content" value={content} onChange={setContent} />
           <FormInput label="Name" value={name} onChange={setName} />
+          <FormInput label="Description" value={content} onChange={setContent} />
           <FormInput label="Location" value={location} onChange={setLocation} />
           <CustomDatePicker label="Start" date={start} onDateChange={setStart} />
           <CustomDatePicker label="End" date={end} onDateChange={setEnd} />
           <Button mt={4} onPress={handleSubmit}>
-            Create Event
+            <Text>Create Event</Text>
           </Button>
         </VStack>
       )}

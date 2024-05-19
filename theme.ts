@@ -1,13 +1,11 @@
 // theme.ts
 import { extendTheme } from 'native-base';
 
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: 'light',
-};
-
-const theme = extendTheme({
-  config
+const customTheme = extendTheme({
+  config: {
+    // Changing initialColorMode to 'dark'
+    initialColorMode: 'light',
+  },
 });
 
-export default theme;
+export default customTheme;
