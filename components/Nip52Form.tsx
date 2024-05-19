@@ -45,7 +45,7 @@ const Nip52Form = () => {
       content,
       tags: [
         ['d', uuidv4()],
-        ['title', name],
+        ['name', name],
         ['start', Math.floor(start.getTime() / 1000)],
         ['end', Math.floor(end.getTime() / 1000)],
         ['start_tzid', Intl.DateTimeFormat().resolvedOptions().timeZone],
