@@ -45,18 +45,17 @@ const Nip52Form = () => {
       content,
       tags: [
         ['d', uuidv4()],
-        ['name', name],
-        ['start', start.getTime().toString()],
-        ['end', end.getTime().toString()],
+        ['title', name],
+        ['start', Math.floor(start.getTime() / 1000)],
+        ['end', Math.floor(end.getTime() / 1000)],
         ['start_tzid', Intl.DateTimeFormat().resolvedOptions().timeZone],
         ['end_tzid', Intl.DateTimeFormat().resolvedOptions().timeZone],
         ['location', location],
+        ['g', ''],
         ...hashtagTags,
         ...referenceLinks,
       ],
-    };
-
-    console.log(event);
+    }
 
     event.id = SHA256(JSON.stringify(event)).toString();
 
