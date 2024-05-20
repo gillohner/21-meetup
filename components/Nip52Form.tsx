@@ -9,6 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import TextInput from './form/TextInput';
 import CustomDatePicker from './form/DatePicker';
 import InputList from './form/InputList'
+import { i18n } from '../App';
 
 const Nip52Form = () => {
   const ndk = useNip07();
@@ -84,26 +85,26 @@ const Nip52Form = () => {
     <Box flex={1} p={4} justifyContent="center" alignItems="center">
       {!loading && !success && (
         <VStack space={4} w="90%" maxW="400px">
-          <TextInput label="Name" value={name} onChange={setName} />
-          <TextInput label="Description" value={content} onChange={setContent} />
-          <TextInput label="Location" value={location} onChange={setLocation} />
-          <CustomDatePicker label="Start" date={start} onDateChange={setStart} />
-          <CustomDatePicker label="End" date={end} onDateChange={setEnd} />
+          <TextInput label={i18n.t('name')} value={name} onChange={setName} />
+          <TextInput label={i18n.t('description')} value={content} onChange={setContent} />
+          <TextInput label={i18n.t('location')} value={location} onChange={setLocation} />
+          <CustomDatePicker label={i18n.t('start')} date={start} onDateChange={setStart} />
+          <CustomDatePicker label={i18n.t('end')} date={end} onDateChange={setEnd} />
           <InputList 
-            label="Hashtags"
+            label={i18n.t('hashtags')}
             list={tags}
             setList={setTags}
-            placeholder="Add Hashtag"
+            placeholder={i18n.t('addHashtag')}
           ></InputList>
           <InputList
-            label="External Links"
+            label={i18n.t('externalLinks')}
             list={links}
             setList={setLinks}
-            placeholder="example.com"
+            placeholder={i18n.t('exampleDomain')}
             isLink={true}
           ></InputList>
           <Button mt={4} onPress={handleSubmit}>
-            <Text>Create Event</Text>
+            <Text>{i18n.t('createEvent')}</Text>
           </Button>
         </VStack>
       )}
@@ -116,10 +117,10 @@ const Nip52Form = () => {
         <Center flex={1}>
           <Icon as={Ionicons} name="checkmark-circle" size="lg" color="green.500" />
           <Text mt={2} fontSize="lg" color="green.500">
-            Event created successfully!
+            {i18n.t('eventCreatedSuccessfully')}
           </Text>
           <Button mt={4} onPress={handleReset}>
-            Create Another Event
+            {i18n.t('createAnotherEvent')}
           </Button>
         </Center>
       )}

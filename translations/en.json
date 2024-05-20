@@ -1,6 +1,20 @@
 {
     "home": "Home",
     "settings": "Settings",
-    "newEvent": "New Event"
+    "newEvent": "New Event",
+    "loading": "Loading...",
+    "upcomingEvents": "Upcoming Events",
+    "name": "Name",
+    "description": "Description",
+    "location": "Location",
+    "start": "Start",
+    "end": "End",
+    "hashtags": "Hashtags",
+    "addHashtag": "Add Hashtag",
+    "externalLinks": "External Links",
+    "exampleDomain": "example.com",
+    "createEvent": "Create Event",
+    "eventCreatedSuccessfully": "Event created successfully!",
+    "createAnotherEvent": "Create Another Event"
 }
   

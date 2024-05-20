@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, VStack, Text, Pressable } from 'native-base';
+import { i18n } from '../App';
 
 const EventCard = ({ event, onPress }) => {
   // Using the browser's locale and timezone to format the date
@@ -11,9 +12,6 @@ const EventCard = ({ event, onPress }) => {
   const formattedEndDate = dateFormatter.format(new Date(parseInt(event.tags.find(tag => tag[0] === 'end')[1])));
   const name = event.tags.find(tag => tag[0] === 'name')[1];
   const location = event.tags.find(tag => tag[0] === 'location')[1];
-
-  console.log(event)
-
 
   return (
     <Pressable onPress={() => onPress(event.id)}>
@@ -28,7 +26,7 @@ const EventCard = ({ event, onPress }) => {
             {formattedStartDate} - {formattedEndDate}
           </Text>
           <Text color="coolGray.500">
-            Location: {location}
+            {i18n.t('location')}: {location}
           </Text>
         </VStack>
       </Box>
