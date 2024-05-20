@@ -10,6 +10,24 @@ import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import CreateNip52Screen from './screens/CreateNip52Screen';
 import { Nip07Provider } from './Nip07Context';
+import * as Localization from 'expo-localization';
+import { I18n } from 'i18n-js';
+
+// Set the key-value pairs for the different languages you want to support.
+const i18n = new I18n({
+  en: { 
+    home: 'Home',
+    settings: 'Settings',
+    newEvent: 'New Event',
+  },
+  de: {
+    home: 'Home',
+    settings: 'Einstellungen',
+    newEvent: 'Neuer Termin',
+  }
+});
+
+i18n.locale = getLocales()[0].languageCode;
 
 const Tab = createBottomTabNavigator();
 
@@ -23,13 +41,13 @@ const App = () => {
               tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
                 switch (route.name) {
-                  case 'Home':
+                  case i18n.t('home'):
                     iconName = 'home-outline';
                     break;
-                  case 'Settings':
+                  case i18n.t('settings'):
                     iconName = 'settings-outline';
                     break;
-                  case 'New Event':
+                  case i18n.t('newEvent'):
                     iconName = 'add-circle-outline';
                     break;
                   default:
@@ -39,9 +57,9 @@ const App = () => {
               },
             })}
           >
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="New Event" component={CreateNip52Screen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name={i18n.t('home')} component={HomeScreen} />
+            <Tab.Screen name={i18n.t('newEvent')} component={CreateNip52Screen} />
+            <Tab.Screen name={i18n.t('settings')} component={SettingsScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </Nip07Provider>
