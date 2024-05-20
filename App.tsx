@@ -12,26 +12,21 @@ import CreateNip52Screen from './screens/CreateNip52Screen';
 import { Nip07Provider } from './Nip07Context';
 import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
+import en from './translations/en.json';
+import de from './translations/de.json';
 
-// Set the key-value pairs for the different languages you want to support.
-const i18n = new I18n({
-  en: { 
-    home: 'Home',
-    settings: 'Settings',
-    newEvent: 'New Event',
-  },
-  de: {
-    home: 'Home',
-    settings: 'Einstellungen',
-    newEvent: 'Neuer Termin',
-  }
-});
-
-i18n.locale = getLocales()[0].languageCode;
+// Translation setup
+const translations = {
+  en: en,
+  de: de
+};
+const i18n = new I18n(translations);
+i18n.locale = Localization.locale;
+i18n.enableFallback = true;
 
 const Tab = createBottomTabNavigator();
 
-const App = () => {
+const App = () => {  
   return (
     <NativeBaseProvider theme={customTheme}>
       <Nip07Provider>
