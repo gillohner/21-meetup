@@ -15,6 +15,7 @@
     "exampleDomain": "example.com",
     "createEvent": "Create Event",
     "eventCreatedSuccessfully": "Event created successfully!",
-    "createAnotherEvent": "Create Another Event"
+    "createAnotherEvent": "Create Another Event",
+    "eventDetail": "EventDetail"
 }
   

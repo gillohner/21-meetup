@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import CreateNip52Screen from './screens/CreateNip52Screen';
+import EventDetailScreen from './screens/EventDetailScreen';
 import { Nip07Provider } from './Nip07Context';
 import * as Localization from 'expo-localization';
 import * as Linking from 'expo-linking';
@@ -112,6 +113,7 @@ const App = () => {
         [i18n.t('settings')]: {
           path: 'settings',
         },
+        EventDetail: 'event/:id',
       },
     },
   };
@@ -156,6 +158,11 @@ const App = () => {
             <Tab.Screen name={i18n.t('home')} component={HomeScreen} />
             <Tab.Screen name={i18n.t('newEvent')} component={CreateNip52Screen} />
             <Tab.Screen name={i18n.t('settings')} component={SettingsScreen} />
+            <Tab.Screen 
+              name={i18n.t('eventDetail')}
+              component={EventDetailScreen}
+              options={{ tabBarButton: () => null }}
+            />
           </Tab.Navigator>
         </NavigationContainer>
       </Nip07Provider>

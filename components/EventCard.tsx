@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, VStack, Text, Pressable, useColorModeValue } from 'native-base';
 import { i18n } from '../App';
 
-const EventCard = ({ event, onPress }) => {
+const EventCard = ({ event }) => {
   const dateFormatter = new Intl.DateTimeFormat(undefined, {
     year: 'numeric', month: 'long', day: 'numeric'
   });
@@ -18,9 +18,13 @@ const EventCard = ({ event, onPress }) => {
   const textColor = useColorModeValue('coolGray.800', 'coolGray.100');
   const secondaryTextColor = useColorModeValue('coolGray.600', 'coolGray.400');
   const tertiaryTextColor = useColorModeValue('coolGray.500', 'coolGray.300');
+  const eventId = event.id;
+
+  console.log(event)
+  console.log(eventId)
 
   return (
-    <Pressable onPress={() => onPress(event.id)}>
+    <Pressable onPress={() => navigation.navigate('event', { eventId })}>
       <Box borderWidth="1" borderColor={borderColor} borderRadius="md" p="5" m="2" bg={bgColor}>
         <VStack space={3}>
           <Text bold fontSize="md" color={textColor}>
