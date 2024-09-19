@@ -26,6 +26,6 @@
     "plugins": [
       "expo-localization"
     ],
-    "scheme": "myapp"
+    "scheme": "21-meetup"
   }
 }

@@ -100,14 +100,22 @@ const App = () => {
   }
 
   const linking = {
-    prefixes: [Linking.createURL('/')],
+    prefixes: [Linking.createURL('/'), '21-meetup://'],
     config: {
       screens: {
-        // Define your screen configurations here
+        [i18n.t('home')]: {
+          path: 'home',
+        },
+        [i18n.t('newEvent')]: {
+          path: 'new-event',
+        },
+        [i18n.t('settings')]: {
+          path: 'settings',
+        },
       },
     },
   };
-
+  
   return (
     <NativeBaseProvider colorModeManager={colorModeManager}>
       <Nip07Provider>
