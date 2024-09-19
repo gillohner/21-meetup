@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { FormControl, Input, InputGroup, IconButton, Checkbox, Text, Box, VStack, HStack, Heading, Icon, Center, useToast, InputLeftAddon, NativeBaseProvider } from "native-base";
+import { FormControl, Input, InputGroup, IconButton, Text, Box, VStack, HStack, Icon, useToast, InputLeftAddon, useColorModeValue } from "native-base";
 import { Feather, Entypo } from "@expo/vector-icons";
 
 const InputList = ({label, list, setList, placeholder, isLink = false}) => {
     const [inputValue, setInputValue] = useState("");
     const toast = useToast();
+
+    // Color mode values
+    const bgColor = useColorModeValue("white", "coolGray.800");
+    const textColor = useColorModeValue("coolGray.800", "coolGray.100");
+    const placeholderColor = useColorModeValue("coolGray.400", "coolGray.500");
+    const iconColor = useColorModeValue("coolGray.500", "coolGray.400");
+    const borderColor = useColorModeValue("coolGray.300", "coolGray.600");
 
     const validateInput = (value) => {
         if (isLink) {
@@ -45,7 +52,7 @@ const InputList = ({label, list, setList, placeholder, isLink = false}) => {
 
     return (
         <FormControl>
-            <FormControl.Label>{label}</FormControl.Label>
+            <FormControl.Label _text={{ color: textColor }}>{label}</FormControl.Label>
             <Box maxW="300" w="100%">
                 <VStack space={4}>
                     <HStack space={2}>
@@ -53,24 +60,40 @@ const InputList = ({label, list, setList, placeholder, isLink = false}) => {
                           w="100%"
                           justifyContent="center"
                         >
-                          {isLink && <InputLeftAddon children={"https://"} />}
+                          {isLink && <InputLeftAddon children={"https://"} bg={bgColor} _text={{ color: textColor }} />}
                           <Input
                             flex={1}
                             onChangeText={setInputValue}
                             value={inputValue}
                             placeholder={placeholder}
-        
+                            color={textColor}
+                            placeholderTextColor={placeholderColor}
+                            borderColor={borderColor}
+                            _focus={{ borderColor: "primary.500" }}
                           />
-                          <IconButton borderRadius="sm" variant="solid" icon={<Icon as={Feather} name="plus" size="sm" color="warmGray.50" />} onPress={addItem} />
+                          <IconButton 
+                            borderRadius="sm" 
+                            variant="solid" 
+                            icon={<Icon as={Feather} name="plus" size="sm" color="warmGray.50" />} 
+                            onPress={addItem}
+                            bg="primary.500"
+                            _pressed={{ bg: "primary.600" }}
+                          />
                         </InputGroup>
                     </HStack>
                     <VStack space={2}>
                         {list.map((item, itemI) => (
                             <HStack w="100%" justifyContent="space-between" alignItems="center" key={item.value + itemI.toString()}>
-                                <Text width="100%" flexShrink={1} textAlign="left" mx="2">
+                                <Text width="100%" flexShrink={1} textAlign="left" mx="2" color={textColor}>
                                     {item.value}
                                 </Text>
-                                <IconButton size="sm" colorScheme="trueGray" icon={<Icon as={Entypo} name="minus" size="xs" color="trueGray.400" />} onPress={() => handleDelete(itemI)} />
+                                <IconButton 
+                                    size="sm" 
+                                    icon={<Icon as={Entypo} name="minus" size="xs" color={iconColor} />} 
+                                    onPress={() => handleDelete(itemI)}
+                                    _pressed={{ bg: "coolGray.100" }}
+                                    _dark={{ _pressed: { bg: "coolGray.700" } }}
+                                />
                             </HStack>
                         ))}
                     </VStack>

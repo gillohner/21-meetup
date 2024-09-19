@@ -19,6 +19,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "crypto-js": "^4.2.0",
     "expo": "~51.0.8",
+    "expo-linking": "~6.3.1",
     "expo-localization": "~15.0.3",
     "expo-status-bar": "~1.12.1",
     "fast-text-encoding": "^1.0.6",

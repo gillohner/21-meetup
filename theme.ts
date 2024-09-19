@@ -3,8 +3,8 @@ import { extendTheme } from 'native-base';
 
 const customTheme = extendTheme({
   config: {
-    // Changing initialColorMode to 'dark'
-    initialColorMode: 'light',
+    initialColorMode: 'dark',
+  }
   },
 });
 

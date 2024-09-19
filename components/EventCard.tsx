@@ -1,9 +1,8 @@
 import React from 'react';
-import { Box, VStack, Text, Pressable } from 'native-base';
+import { Box, VStack, Text, Pressable, useColorModeValue } from 'native-base';
 import { i18n } from '../App';
 
 const EventCard = ({ event, onPress }) => {
-  // Using the browser's locale and timezone to format the date
   const dateFormatter = new Intl.DateTimeFormat(undefined, {
     year: 'numeric', month: 'long', day: 'numeric'
   });
@@ -13,19 +12,24 @@ const EventCard = ({ event, onPress }) => {
   const name = event.tags.find(tag => tag[0] === 'name')[1];
   const location = event.tags.find(tag => tag[0] === 'location')[1];
 
+  // Define color values for light and dark modes
+  const bgColor = useColorModeValue('white', 'coolGray.800');
+  const borderColor = useColorModeValue('coolGray.300', 'coolGray.600');
+  const textColor = useColorModeValue('coolGray.800', 'coolGray.100');
+  const secondaryTextColor = useColorModeValue('coolGray.600', 'coolGray.400');
+  const tertiaryTextColor = useColorModeValue('coolGray.500', 'coolGray.300');
+
   return (
     <Pressable onPress={() => onPress(event.id)}>
-      <Box borderWidth="1" borderColor="coolGray.300" borderRadius="md" p="5" m="2" bg="white">
+      <Box borderWidth="1" borderColor={borderColor} borderRadius="md" p="5" m="2" bg={bgColor}>
         <VStack space={3}>
-          <Text bold fontSize="md">
+          <Text bold fontSize="md" color={textColor}>
             {name}
           </Text>
-          <Text color="coolGray.600">
-          </Text>
-          <Text fontSize="xs" color="coolGray.400">
+          <Text fontSize="xs" color={secondaryTextColor}>
             {formattedStartDate} - {formattedEndDate}
           </Text>
-          <Text color="coolGray.500">
+          <Text color={tertiaryTextColor}>
             {i18n.t('location')}: {location}
           </Text>
         </VStack>

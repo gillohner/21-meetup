@@ -115,7 +115,7 @@ const Nip52Form = () => {
       )}
       {success && (
         <Center flex={1}>
-          <Icon as={Ionicons} name="checkmark-circle" size="lg" color="green.500" />
+          <Icon as={Ionicons} name="checkmark-circle" size="lg"/>
           <Text mt={2} fontSize="lg" color="green.500">
             {i18n.t('eventCreatedSuccessfully')}
           </Text>
