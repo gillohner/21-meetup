@@ -53,7 +53,7 @@ const Nip52Form = () => {
         ['end_tzid', Intl.DateTimeFormat().resolvedOptions().timeZone],
         ['location', location],
         ['g', ''],
-        ['t', '52Meetups'],
+        ['t', '21Meetups'],
         ...hashtagTags,
         ...referenceLinks,
       ],

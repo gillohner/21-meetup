@@ -1,5 +1,5 @@
 {
-  "name": "52-meetups",
+  "name": "21-meetup",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "crypto-js": "^4.2.0",
-    "expo": "~51.0.8",
+    "expo": "^51.0.32",
     "expo-linking": "~6.3.1",
     "expo-localization": "~15.0.3",
     "expo-status-bar": "~1.12.1",

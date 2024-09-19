@@ -113,7 +113,7 @@ const App = () => {
         [i18n.t('settings')]: {
           path: 'settings',
         },
-        EventDetail: 'event/:id',
+        [i18n.t('eventDetail')]: 'event/:id', // Use the translation key here
       },
     },
   };

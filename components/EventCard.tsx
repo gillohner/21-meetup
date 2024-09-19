@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, VStack, Text, Pressable, useColorModeValue } from 'native-base';
 import { i18n } from '../App';
+import {useNavigation } from '@react-navigation/native';
 
 const EventCard = ({ event }) => {
   const dateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -19,12 +20,13 @@ const EventCard = ({ event }) => {
   const secondaryTextColor = useColorModeValue('coolGray.600', 'coolGray.400');
   const tertiaryTextColor = useColorModeValue('coolGray.500', 'coolGray.300');
   const eventId = event.id;
+  const navigation = useNavigation();
 
   console.log(event)
   console.log(eventId)
 
   return (
-    <Pressable onPress={() => navigation.navigate('event', { eventId })}>
+    <Pressable onPress={() => navigation.navigate(i18n.t('eventDetail'), { id: eventId })}>
       <Box borderWidth="1" borderColor={borderColor} borderRadius="md" p="5" m="2" bg={bgColor}>
         <VStack space={3}>
           <Text bold fontSize="md" color={textColor}>

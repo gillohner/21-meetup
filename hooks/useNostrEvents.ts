@@ -13,7 +13,7 @@ const useNostrEvents = () => {
       return;
     }
 
-    const filters = { kinds: [31923], '#t': ['52Meetups'] };
+    const filters = { kinds: [31923], '#t': ['52Meetups', '21meetup'] };
     const subscription = ndk.subscribe(filters);
 
     subscription.on('event', event => {
